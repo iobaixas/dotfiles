@@ -1,0 +1,23 @@
+[user]
+	name = Ignacio Baixas
+	email = iobaixas@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+	interactive = auto
+	log = auto
+[alias]
+	st = status
+	cm = commit
+	co = checkout
+	br = branch
+
+[hub]
+protocol = https
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
+[core]
+excludesfile = /opt/boxen/config/git/gitignore
