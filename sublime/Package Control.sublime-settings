@@ -1,0 +1,20 @@
+{
+	"auto_upgrade_last_run": null,
+	"installed_packages":
+	[
+		"CoffeeScript",
+		"DocBlockr",
+		"EditorConfig",
+		"Git",
+		"GitGutter",
+		"Haml",
+		"Markdown Preview",
+		"Package Control",
+		"Package Syncing",
+		"Rake",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"TrailingSpaces"
+	]
+}
