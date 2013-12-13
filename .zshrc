@@ -1,52 +1,61 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
 
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
-bindkey "^R" history-incremental-search-backward
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
 
-# Aliases
-source $HOME/.aliases
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-VIMODE='❯'
-function zle-line-init zle-keymap-select {
- VIMODE="${${KEYMAP/vicmd/:}/(main|viins)/❯}"
- zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
 
-# PROMPT Customization (inspired by https://github.com/sindresorhus/pure)
+# Uncomment this to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
 
-DEFAULT_USERNAME='andres'
+# Uncomment to change how often before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
 
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git # You can add hg too if needed: `git hg`
-zstyle ':vcs_info:git*' formats ' %b'
-zstyle ':vcs_info:git*' actionformats ' %b|%a'
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
 
-# enable prompt substitution
-setopt PROMPT_SUBST
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Only show username if not default
-[ $USER != $DEFAULT_USERNAME ] && local username='%n@%m '
+# Uncomment following line if you want to disable command autocorrection
+# DISABLE_CORRECTION="true"
 
-# Fastest possible way to check if repo is dirty
-git_dirty() {
-	# check if we're in a git repo
-	command git rev-parse --is-inside-work-tree &>/dev/null || return
-	# check if it's dirty
-	command git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ] && echo '*'
-}
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
 
-precmd() {
-	vcs_info
-	PROMPT='%F{blue}%~%F{236}$vcs_info_msg_0_`git_dirty` $username%f${VIMODE} '
-}
-# End of PROMPT
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+# Uncomment following line if you want to  shown in the command execution time stamp 
+# in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
+# yyyy-mm-dd
+# HIST_STAMPS="mm/dd/yyyy"
 
-export EDITOR=vim
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git osx)
+
+source $ZSH/oh-my-zsh.sh
+
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
+# User configuration
+
+export PATH="bin:/opt/boxen/heroku/bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/rbenv/plugins/ruby-build/bin:node_modules/.bin:/opt/boxen/nodenv/shims:/opt/boxen/nodenv/bin:/opt/boxen/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:bin:/opt/boxen/heroku/bin:/opt/boxen/rbenv/shims:/opt/boxen/rbenv/bin:/opt/boxen/rbenv/plugins/ruby-build/bin:node_modules/.bin:/opt/boxen/nodenv/shims:/opt/boxen/nodenv/bin:/opt/boxen/bin:/opt/boxen/homebrew/bin:/opt/boxen/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# Boxen env
+source /opt/boxen/env.sh
